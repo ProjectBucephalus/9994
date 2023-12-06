@@ -4,6 +4,7 @@
 
 package frc.robot;
 
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
@@ -34,11 +35,11 @@ public class Robot extends TimedRobot {
   private int m_frontRight = 3;
   private int m_rearRight = 1;
 
-  private CANSparkMax m_frontLeftMotor = new CANSparkMax(m_frontLeft, MotorType.kBrushed);
-  private CANSparkMax m_rearLeftMotor = new CANSparkMax(m_rearLeft, MotorType.kBrushed);
+  private WPI_VictorSPX m_frontLeftMotor = new WPI_VictorSPX(m_frontLeft);
+  private WPI_VictorSPX m_rearLeftMotor = new WPI_VictorSPX(m_rearLeft);
 
-  private CANSparkMax m_frontRightMotor = new CANSparkMax(m_frontRight, MotorType.kBrushed);
-  private CANSparkMax m_rearRightMotor = new CANSparkMax(m_rearRight, MotorType.kBrushed);
+  private WPI_VictorSPX m_frontRightMotor = new WPI_VictorSPX(m_frontRight);
+  private WPI_VictorSPX m_rearRightMotor = new WPI_VictorSPX(m_rearRight);
   
   MotorControllerGroup m_left = new MotorControllerGroup(m_frontLeftMotor, m_rearLeftMotor);
   MotorControllerGroup m_right = new MotorControllerGroup(m_frontRightMotor, m_rearRightMotor);
