@@ -10,6 +10,7 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -27,13 +28,13 @@ public class Robot extends TimedRobot {
   private String m_autoSelected;
   private final SendableChooser<String> m_chooser = new SendableChooser<>();
 
-  private final Joystick m_stick = new Joystick(0);
+  private final XboxController m_Controller = new XboxController(0);
 
-  private int m_frontLeft = 2;
-  private int m_rearLeft = 4;
+  private int m_frontLeft = 4;
+  private int m_rearLeft = 3;
 
-  private int m_frontRight = 3;
-  private int m_rearRight = 1;
+  private int m_frontRight = 1;
+  private int m_rearRight = 2;
 
   private WPI_VictorSPX m_frontLeftMotor = new WPI_VictorSPX(m_frontLeft);
   private WPI_VictorSPX m_rearLeftMotor = new WPI_VictorSPX(m_rearLeft);
@@ -109,7 +110,7 @@ public class Robot extends TimedRobot {
   /** This function is called periodically during operator control. */
   @Override
   public void teleopPeriodic() {
-    m_robotDrive.arcadeDrive(-m_stick.getY(), -m_stick.getX());
+    m_robotDrive.tankDrive(m_Controller.getLeftY(), m_Controller.getRightY());
   }
 
   /** This function is called once when the robot is disabled. */
